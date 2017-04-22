@@ -16,34 +16,22 @@ body {
 
   .green {
     border-radius: 100% 0 0 0;
-    background: #040;
-    &:hover {
-      background: #0F0;
-    }
+    background: #0F0;
   }
 
   .red {
     border-radius: 0 100% 0 0;
-    background: #400;
-    &:hover {
-      background: #F00;
-    }
+    background: #F00;
   }
 
   .yellow {
     border-radius: 0 0 0 100%;
-    background: #440;
-    &:hover {
-      background: #FF0;
-    }
+    background: #FF0;
   }
 
   .blue {
     border-radius: 0 0 100% 0;
-    background: #004;
-    &:hover {
-      background: #00F;
-    }
+    background: #00F;
   }
 
   .item {
@@ -52,5 +40,9 @@ body {
     margin: auto;
     text-align: center;
     cursor: pointer;
+    opacity: 0.25;
+  }
+  .hover {
+    opacity: 1;
   }
 }

@@ -14,29 +14,24 @@ body {
   padding: 5%; }
   .container .green {
     border-radius: 100% 0 0 0;
-    background: #040; }
-    .container .green:hover {
-      background: #0F0; }
+    background: #0F0; }
   .container .red {
     border-radius: 0 100% 0 0;
-    background: #400; }
-    .container .red:hover {
-      background: #F00; }
+    background: #F00; }
   .container .yellow {
     border-radius: 0 0 0 100%;
-    background: #440; }
-    .container .yellow:hover {
-      background: #FF0; }
+    background: #FF0; }
   .container .blue {
     border-radius: 0 0 100% 0;
-    background: #004; }
-    .container .blue:hover {
-      background: #00F; }
+    background: #00F; }
   .container .item {
     width: 48%;
     height: 48%;
     margin: auto;
     text-align: center;
-    cursor: pointer; }
+    cursor: pointer;
+    opacity: 0.25; }
+  .container .hover {
+    opacity: 1; }
 
 /*# sourceMappingURL=styles.css.map */
