@@ -1,4 +1,49 @@
 body {
-  background: #004;
+  background: #202;
   color: #DDD;
+}
+
+.container {
+  display: flex;
+  height: 600px;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  // align-content: space-around;
+  div {
+    // flex: none none 2rem;
+    width: 45%;
+    height: 45%;
+    margin: auto;
+    text-align: center;
+    cursor: pointer;
+  }
+}
+
+.red {
+  background: #400;
+  &:hover {
+    background: #F00;
+  }
+}
+
+.blue {
+  background: #004;
+  &:hover {
+    background: #00F;
+  }
+}
+
+.green {
+  background: #040;
+  &:hover {
+    background: #0F0;
+  }
+}
+
+.yellow {
+  background: #440;
+  &:hover {
+    background: #FF0;
+  }
 }

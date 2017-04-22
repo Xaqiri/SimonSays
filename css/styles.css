@@ -1,5 +1,38 @@
 body {
-  background: #004;
+  background: #202;
   color: #DDD; }
+
+.container {
+  display: flex;
+  height: 600px;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-wrap: wrap; }
+  .container div {
+    width: 45%;
+    height: 45%;
+    margin: auto;
+    text-align: center;
+    cursor: pointer; }
+
+.red {
+  background: #400; }
+  .red:hover {
+    background: #F00; }
+
+.blue {
+  background: #004; }
+  .blue:hover {
+    background: #00F; }
+
+.green {
+  background: #040; }
+  .green:hover {
+    background: #0F0; }
+
+.yellow {
+  background: #440; }
+  .yellow:hover {
+    background: #FF0; }
 
 /*# sourceMappingURL=styles.css.map */
