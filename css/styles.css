@@ -1,38 +1,42 @@
 body {
-  background: #202;
+  background: #222;
   color: #DDD; }
 
 .container {
   display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
   height: 600px;
   max-width: 600px;
-  margin: 0 auto;
-  flex-wrap: wrap; }
-  .container div {
-    width: 45%;
-    height: 45%;
+  margin: 5% auto;
+  background: #000;
+  border-radius: 50%;
+  padding: 5%; }
+  .container .green {
+    border-radius: 100% 0 0 0;
+    background: #040; }
+    .container .green:hover {
+      background: #0F0; }
+  .container .red {
+    border-radius: 0 100% 0 0;
+    background: #400; }
+    .container .red:hover {
+      background: #F00; }
+  .container .yellow {
+    border-radius: 0 0 0 100%;
+    background: #440; }
+    .container .yellow:hover {
+      background: #FF0; }
+  .container .blue {
+    border-radius: 0 0 100% 0;
+    background: #004; }
+    .container .blue:hover {
+      background: #00F; }
+  .container .item {
+    width: 48%;
+    height: 48%;
     margin: auto;
     text-align: center;
     cursor: pointer; }
-
-.red {
-  background: #400; }
-  .red:hover {
-    background: #F00; }
-
-.blue {
-  background: #004; }
-  .blue:hover {
-    background: #00F; }
-
-.green {
-  background: #040; }
-  .green:hover {
-    background: #0F0; }
-
-.yellow {
-  background: #440; }
-  .yellow:hover {
-    background: #FF0; }
 
 /*# sourceMappingURL=styles.css.map */

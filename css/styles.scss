@@ -1,49 +1,56 @@
 body {
-  background: #202;
+  background: #222;
   color: #DDD;
 }
 
 .container {
   display: flex;
+  flex-wrap: wrap;
+  align-content: stretch;
   height: 600px;
   max-width: 600px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  // align-content: space-around;
-  div {
-    // flex: none none 2rem;
-    width: 45%;
-    height: 45%;
+  margin: 5% auto;
+  background: #000;
+  border-radius: 50%;
+  padding: 5%;
+
+  .green {
+    border-radius: 100% 0 0 0;
+    background: #040;
+    &:hover {
+      background: #0F0;
+    }
+  }
+
+  .red {
+    border-radius: 0 100% 0 0;
+    background: #400;
+    &:hover {
+      background: #F00;
+    }
+  }
+
+  .yellow {
+    border-radius: 0 0 0 100%;
+    background: #440;
+    &:hover {
+      background: #FF0;
+    }
+  }
+
+  .blue {
+    border-radius: 0 0 100% 0;
+    background: #004;
+    &:hover {
+      background: #00F;
+    }
+  }
+
+  .item {
+    width: 48%;
+    height: 48%;
     margin: auto;
     text-align: center;
     cursor: pointer;
-  }
-}
-
-.red {
-  background: #400;
-  &:hover {
-    background: #F00;
-  }
-}
-
-.blue {
-  background: #004;
-  &:hover {
-    background: #00F;
-  }
-}
-
-.green {
-  background: #040;
-  &:hover {
-    background: #0F0;
-  }
-}
-
-.yellow {
-  background: #440;
-  &:hover {
-    background: #FF0;
   }
 }
