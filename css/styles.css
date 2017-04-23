@@ -8,6 +8,18 @@ footer {
     color: #AAF;
     text-decoration: none; }
 
+.start_button {
+  background: #222;
+  border: 2px solid #DDD;
+  padding: 1%;
+  display: inline;
+  font-size: 1.25rem;
+  font-weight: 700; }
+  .start_button:hover {
+    background: #DDD;
+    color: #222;
+    cursor: pointer; }
+
 .container {
   display: flex;
   flex-wrap: wrap;

@@ -1,13 +1,15 @@
 let score = document.querySelector('.score')
+let start_button = document.querySelector('.start_button')
 let red = document.querySelector('.red')
 let blue = document.querySelector('.blue')
 let green = document.querySelector('.green')
 let yellow = document.querySelector('.yellow')
 let squares = [red, blue, green, yellow]
-let is_ai_turn = true
+let is_ai_turn = false
 let ai_moves = []
 let num_moves = 0
 let next_color = 0
+let game_is_playing = false
 
 const debug = () => {
   console.log(
@@ -31,6 +33,8 @@ const highlight = i => {
   })
 }
 
+// Sets a delay between actions
+// Copied from StackOverflow, I didn't write this
 const sleep = ms => {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
@@ -44,21 +48,34 @@ const ai_take_turn = () => {
   is_ai_turn = false
 }
 
-ai_take_turn()
+const reset_game = () => {
+  ai_moves = []
+  num_moves = 0
+  next_color = 0
+  score.innerHTML = 0
+}
+
+const start_game = () => {
+  reset_game()
+  is_ai_turn = true;
+  ai_take_turn()
+}
 
 squares.forEach(s => {
+  s.addEventListener('mousedown', () => {
+    s.classList.add('hover')
+  })
+  s.addEventListener('mouseup', () => {
+    s.classList.remove('hover')
+  })
   if (!is_ai_turn) {
     s.addEventListener('click', () => {
       if (s !== ai_moves[next_color]) {
-        console.log('Wrong')
-        next_color = 0
-        num_moves = 0
-        score.innerHTML = num_moves
-        ai_moves = []
-        ai_take_turn()
+        if (game_is_playing) {
+          start_game()
+        }
       }
       else {
-        console.log('Correct')
         next_color += 1
         if (next_color >= num_moves) {
           score.innerHTML = num_moves
@@ -67,11 +84,17 @@ squares.forEach(s => {
         }
       }
     })
-    s.addEventListener('mouseenter', () => {
-      s.classList.add('hover')
-    })
-    s.addEventListener('mouseleave', () => {
-      s.classList.remove('hover')
-    })
+  }
+})
+
+start_button.addEventListener('click', () => {
+  if (!game_is_playing) {
+    game_is_playing = true;
+    start_button.innerHTML = 'Stop Game'
+    start_game()
+  } else {
+    game_is_playing = false;
+    start_button.innerHTML = 'Start Game'
+    reset_game()
   }
 })
