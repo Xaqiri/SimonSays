@@ -1,6 +1,8 @@
-let score = document.querySelector('.score')
+let sequence = document.querySelector('.sequence')
 let start_button = document.querySelector('.start_button')
-let game_over = document.querySelector('.game_over')
+let strict_button = document.querySelector('.strict_button')
+let lose_screen = document.querySelector('.lose_screen')
+let win_screen = document.querySelector('.win_screen')
 let game_board = document.querySelector('.container')
 let green = document.querySelector('.green')
 let red = document.querySelector('.red')
@@ -15,6 +17,7 @@ let is_ai_turn = false
 let ai_moves = []
 let num_moves = 0
 let next_color = 0
+let strict = false
 let game_is_playing = false
 
 const debug = () => {
@@ -44,19 +47,30 @@ const add_events = () => {
         // Player gave wrong answer
         if (s !== ai_moves[next_color]) {
           if (game_is_playing) {
-            stop_game()
-            game_board.style.display = 'none'
-            game_over.style.display = 'block'
-            game_is_playing = false
+            if (strict) {
+              stop_game()
+              game_board.style.display = 'none'
+              lose_screen.style.display = 'block'
+              game_is_playing = false
+            } else {
+              next_color = 0
+              sleep(500).then(() => ai_show_moves())
+            }
           }
         }
         // Player gave correct answer
         else {
           next_color += 1
           if (next_color >= num_moves) {
-            score.innerHTML = num_moves
-            next_color = 0
-            sleep(500).then(() => ai_take_turn())
+            if (num_moves === 20) {
+              stop_game()
+              game_board.style.display = 'none'
+              win_screen.style.display = 'block'
+              game_is_playing = false
+            } else {
+              next_color = 0
+              sleep(500).then(() => ai_take_new_turn())
+            }
           }
         }
       })
@@ -88,10 +102,17 @@ const sleep = ms => {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-const ai_take_turn = () => {
+const ai_take_new_turn = () => {
   let move = Math.floor(Math.random()*4)
   ai_moves.push(squares[move])
   num_moves = ai_moves.length
+  sequence.innerHTML = num_moves
+  let i = 0
+  highlight(i)
+  is_ai_turn = false
+}
+
+const ai_show_moves = () => {
   let i = 0
   highlight(i)
   is_ai_turn = false
@@ -101,18 +122,18 @@ const reset_game = () => {
   ai_moves = []
   num_moves = 0
   next_color = 0
-  score.innerHTML = 0
+  sequence.innerHTML = 0
   is_ai_turn = false
 }
 
 const start_game = () => {
   reset_game()
   game_board.style.display = 'flex'
-  game_over.style.display = 'none'
+  lose_screen.style.display = 'none'
   game_is_playing = true;
   start_button.innerHTML = 'Stop Game'
   is_ai_turn = true;
-  ai_take_turn()
+  ai_take_new_turn()
 }
 
 const stop_game = () => {
@@ -128,5 +149,12 @@ start_button.addEventListener('click', () => {
     start_game()
   } else {
     stop_game()
+  }
+})
+strict_button.addEventListener('click', () => {
+  if (!game_is_playing) {
+    strict = !strict
+    if (strict) strict_button.classList.add('btn-active')
+    else strict_button.classList.remove('btn-active')
   }
 })

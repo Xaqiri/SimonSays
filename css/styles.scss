@@ -24,7 +24,7 @@ h1 {
   margin-left: 2%;
 }
 
-.start_button {
+.btn {
   background: #222;
   border: 2px solid #DDD;
   margin-left: 2%;
@@ -36,6 +36,10 @@ h1 {
     background: #DDD;
     color: #222;
     cursor: pointer;
+  }
+  &-active {
+    background: #DDD;
+    color: #222;
   }
 }
 
