@@ -1,28 +1,54 @@
 body {
+  margin: 0;
+  padding: 0;
   background: #222;
   color: #DDD;
+  font-family: 'Roboto', sans-serif;
 }
 
 footer {
   text-align: center;
+  font-weight: 900;
   a {
     color: #AAF;
     text-decoration: none;
+    font-weight: 300;
+    font-size: 1.25rem;
+    &:hover {
+      color: darken(#AAF, 10%);
+    }
   }
+}
+
+h1 {
+  margin-left: 2%;
 }
 
 .start_button {
   background: #222;
   border: 2px solid #DDD;
-  padding: 1%;
-  display: inline;
+  margin-left: 2%;
+  padding: 1rem;
+  display: inline-block;
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 900;
   &:hover {
     background: #DDD;
     color: #222;
     cursor: pointer;
   }
+}
+
+.game_over {
+  display: none;
+  margin: 5% 0;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 25rem;
+  text-align: center;
+  height: 25rem;
+  background: #DDD;
+  color: #222;
 }
 
 .container {
@@ -33,7 +59,7 @@ footer {
   max-width: 600px;
   margin: 5% auto;
   background: #000;
-  border-radius: 50%;
+  border-radius: 100%;
   padding: 5%;
 
   .green {
